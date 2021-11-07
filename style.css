@@ -1,7 +1,12 @@
 :root {
     --big-gap: 5vmin;
+    --mid-gap: 3.5vmin;
     --reg-gap: 2.5vmin;
-    --border: hsl(41, 30%, 68%);
+    --brd-inner: hsl(41, 30%, 68%);
+    --brd-outer: hsl(53, 18%, 81%);
+    --clr-red: hsl(0, 80%, 47%);
+    --clr-blue: hsl(206, 100%, 30%);
+    --clr-yellow: hsl(52, 80%, 70%);
 }
 
 html, body {
@@ -15,7 +20,7 @@ html, body {
     margin: 0 auto;
     padding: var(--reg-gap);
     box-sizing: border-box;
-    background-color: hsl(53, 18%, 81%);
+    background-color: var(--brd-outer);
 }
 
 .inner-wrapper {
@@ -27,7 +32,9 @@ html, body {
     grid-template-rows: 1.5fr 1.5fr 0.5fr 0.5fr;
     background-color: black;
     gap: var(--reg-gap);
-    box-shadow: -0.5vmin 0 var(--border), 0 1vmin var(--border), -0.5vmin 1vmin var(--border);
+    box-shadow: -0.5vmin 0 var(--brd-inner),
+    0 1vmin var(--brd-inner),
+    -0.5vmin 1vmin var(--brd-inner);
 }
 
 .white-left {
@@ -38,6 +45,16 @@ html, body {
     grid-column-end: 2;
     display: grid;
     row-gap: var(--big-gap);
+}
+
+.bottom-right {
+    grid-area: bottom-right;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    display: grid;
+    row-gap: var(--mid-gap);
 }
 
 .bottom {
@@ -55,7 +72,7 @@ html, body {
 }
 
 .red {
-    background-color: hsl(0, 80%, 47%);
+    background-color: var(--clr-red);
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 1;
@@ -63,7 +80,7 @@ html, body {
 }
 
 .blue {
-    background-color: hsl(206, 100%, 30%);
+    background-color: var(--clr-blue);
     grid-row-start: 3;
     grid-row-end: 5;
     position: relative;
@@ -84,5 +101,5 @@ html, body {
 }
 
 .yellow {
-    background-color: hsl(52, 80%, 70%);
+    background-color: var(--clr-yellow);
 }
