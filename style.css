@@ -14,10 +14,16 @@ html, body {
     padding: 0;
 }
 
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .outer-wrapper {
     width: 100vmin;
     height: 100vmin;
-    margin: 0 auto;
     padding: var(--reg-gap);
     box-sizing: border-box;
     background-color: var(--brd-outer);
