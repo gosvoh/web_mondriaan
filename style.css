@@ -38,8 +38,9 @@ body {
     grid-template-rows: 1.5fr 1.5fr 0.5fr 0.5fr;
     background-color: black;
     gap: var(--reg-gap);
-    border-left: 0.5vmin solid var(--brd-inner);
-    border-bottom: 1vmin solid var(--brd-inner);
+    box-shadow: -0.5vmin 0 var(--brd-inner),
+    0 1vmin var(--brd-inner),
+    -0.5vmin 1vmin var(--brd-inner);
 }
 
 .white-left {
