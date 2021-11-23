@@ -1,17 +1,21 @@
 :root {
-    --big-gap: 5vmin;
-    --mid-gap: 3.5vmin;
-    --reg-gap: 2.5vmin;
+    --big-gap: 5.5vmin;
+    --mid-gap: 4vmin;
+    --reg-gap: 3vmin;
+    --grid-col-temp: 1.25fr 4fr 0.5fr;
+    --grid-row-temp: 1.5fr 1.5fr 0.5fr 0.5fr;
     --brd-inner: hsl(41, 30%, 68%);
     --brd-outer: hsl(53, 18%, 81%);
     --clr-red: hsl(0, 80%, 47%);
     --clr-blue: hsl(206, 100%, 30%);
     --clr-yellow: hsl(52, 80%, 70%);
+    --clr-dark: hsl(0, 0%, 17%);
 }
 
 html, body {
     margin: 0;
     padding: 0;
+    background-color: var(--clr-dark);
 }
 
 body {
@@ -34,8 +38,8 @@ body {
     height: 100%;
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: 2fr 4fr 1fr;
-    grid-template-rows: 1.5fr 1.5fr 0.5fr 0.5fr;
+    grid-template-columns: var(--grid-col-temp);
+    grid-template-rows: var(--grid-row-temp);
     background-color: black;
     gap: var(--reg-gap);
     box-shadow: -0.5vmin 0 var(--brd-inner),
