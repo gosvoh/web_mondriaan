@@ -10,6 +10,7 @@
     --clr-blue: hsl(206, 100%, 30%);
     --clr-yellow: hsl(52, 80%, 70%);
     --clr-dark: hsl(0, 0%, 17%);
+    --art-size: 85vmin;
 }
 
 html, body {
@@ -21,13 +22,14 @@ html, body {
 body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .outer-wrapper {
-    width: 100vmin;
-    height: 100vmin;
+    width: var(--art-size);
+    height: var(--art-size);
     padding: var(--reg-gap);
     box-sizing: border-box;
     background-color: var(--brd-outer);
@@ -79,6 +81,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1;
 }
 
 .bottom {
@@ -126,4 +129,82 @@ body {
 
 .yellow {
     background-color: var(--clr-yellow);
+}
+
+.button {
+    display: flex;
+    width: 20vmin;
+    height: 5vmin;
+    background-color: white;
+    border-radius: 2vmin;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.button:after {
+    content: "О художнике";
+    font-family: sans-serif;
+    font-size: 2.5vmin;
+    text-transform: uppercase;
+}
+
+.modal-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: hsl(0, 0%, 0%, 0.5);
+    animation: grayOut ease-in-out 0.75s;
+}
+
+.modal {
+    position: relative;
+    height: 85%;
+    width: 75%;
+    animation: animateTop ease-in-out 0.75s;
+}
+
+embed {
+    width: 100%;
+    height: 100%;
+    border-radius: 2.5vmin;
+}
+
+.close-btn {
+    position: absolute;
+    float: right;
+    color: lightgray;
+    font-size: 5vmin;
+    font-weight: bold;
+    right: 0;
+    top: -5vmin;
+}
+
+.close-btn:hover {
+    color: darkgray;
+}
+
+@keyframes animateTop {
+    from {
+        transform: translateY(-10vmin);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes grayOut {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
