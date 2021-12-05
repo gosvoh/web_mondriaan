@@ -184,6 +184,7 @@ embed {
     font-weight: bold;
     right: 0;
     top: -5vmin;
+    cursor: pointer;
 }
 
 .close-btn:hover {
