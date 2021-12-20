@@ -1,0 +1,7 @@
+{
+  "name": "web_mondriaan",
+  "version": "1.0.0",
+  "dependencies": {
+    "sass": "^1.45.0"
+  }
+}

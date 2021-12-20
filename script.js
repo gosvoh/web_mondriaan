@@ -15,3 +15,10 @@ window.onclick = function(e){
         modal.style.display = "none"
     }
 }
+
+let images = document.querySelector('.images').children;
+for (let i = 0; i < images.length; i++) {
+    images[i].style.backgroundImage = 'url(./img/' + i + '.jpg)';
+    images[i].style.backgroundSize = 'cover';
+    images[i].style.backgroundPosition = 'center';
+}
