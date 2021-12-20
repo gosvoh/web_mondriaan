@@ -1,0 +1,267 @@
+$big-gap: 5.5vmin;
+$mid-gap: 4vmin;
+$reg-gap: 3vmin;
+$grid-col-temp: 1.25fr 4fr 0.5fr;
+$grid-row-temp: 1.5fr 1.5fr 0.5fr 0.5fr;
+$brd-inner: hsl(41, 30%, 68%);
+$brd-outer: hsl(53, 18%, 81%);
+$clr-red: hsl(0, 80%, 47%);
+$clr-blue: hsl(206, 100%, 30%);
+$clr-yellow: hsl(52, 80%, 70%);
+$clr-dark: hsl(0, 0%, 17%);
+$art-size: 85vmin;
+$brpt-small: 600px;
+$brpt-middle: 900px;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: $clr-dark;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.outer-wrapper {
+  width: $art-size;
+  height: $art-size;
+  padding: $reg-gap;
+  box-sizing: border-box;
+  background-color: $brd-outer;
+
+  .inner-wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: $grid-col-temp;
+    grid-template-rows: $grid-row-temp;
+    background-color: black;
+    gap: $reg-gap;
+    box-shadow: -0.5vmin 0 $brd-inner,
+    0 1vmin $brd-inner,
+    -0.5vmin 1vmin $brd-inner;
+  }
+}
+
+.white-left {
+  grid-area: left;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: grid;
+  row-gap: $big-gap;
+}
+
+.bottom-right {
+  grid-area: bottom-right;
+  grid-row-start: 3;
+  grid-row-end: 5;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  position: relative;
+
+  .area {
+    width: 100%;
+    height: 100%;
+    display: grid;
+  }
+
+  .gap {
+    width: 95%;
+    background-color: black;
+    height: $mid-gap;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+}
+
+.bottom {
+  grid-row-start: 3;
+  grid-row-end: 5;
+}
+
+.block {
+  width: 100%;
+  height: 100%;
+}
+
+.white {
+  background-color: white;
+}
+
+.red {
+  background-color: $clr-red;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.blue {
+  background-color: $clr-blue;
+  grid-row-start: 3;
+  grid-row-end: 5;
+  position: relative;
+
+  p {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0.5vmin;
+    font-family: sans-serif;
+    font-size: 1.5vmin;
+    letter-spacing: 1vmin;
+
+    span {
+      letter-spacing: normal;
+    }
+  }
+}
+
+.yellow {
+  background-color: $clr-yellow;
+}
+
+.button {
+  display: flex;
+  width: 20vmin;
+  height: 5vmin;
+  background-color: white;
+  border-radius: 2vmin;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:after {
+    content: "О художнике";
+    font-family: sans-serif;
+    font-size: 2.5vmin;
+    text-transform: uppercase;
+  }
+}
+
+.modal-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: hsl(0, 0%, 0%, 0.5);
+  animation: grayOut ease-in-out 0.75s;
+}
+
+.modal {
+  position: relative;
+  height: 85%;
+  width: 65%;
+  animation: animateTop ease-in-out 0.75s;
+}
+
+.main-card {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  font-family: "Ubuntu", sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 6rem;
+  overflow: auto;
+  border-radius: 2.5vmin;
+  // Фикс для скругления
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+
+  @media screen and (max-width: $brpt-small) {
+    padding: 2rem 2rem;
+  }
+
+  @media screen and (min-width: $brpt-small) and (max-width: $brpt-middle) {
+    padding: 2rem 4rem;
+  }
+
+  .text {
+    h1 {
+      padding: 0;
+      margin: 0 0 1em;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    p {
+      padding: 0;
+      margin: 0 0 1em;
+      text-align: justify;
+    }
+  }
+
+  .images {
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template: 1fr 1fr / 1fr 1fr 1fr;
+    min-height: 125%;
+
+    @media screen and (max-width: $brpt-middle) {
+      grid-template: 1fr 1fr 1fr/ 1fr 1fr;
+      min-height: 150%;
+    }
+
+    @media screen and (max-width: $brpt-small) {
+      grid-template: auto / 1fr;
+      min-height: 200%;
+    }
+  }
+}
+
+embed {
+  display: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 2.5vmin;
+}
+
+.close-btn {
+  position: absolute;
+  float: right;
+  color: lightgray;
+  font-size: 5vmin;
+  font-weight: bold;
+  right: 0;
+  top: -5vmin;
+  cursor: pointer;
+
+  &:hover {
+    color: darkgray;
+  }
+}
+
+@keyframes animateTop {
+  from {
+    transform: translateY(-10vmin);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes grayOut {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
